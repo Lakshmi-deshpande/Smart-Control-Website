@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smart Control — Gesture-Powered System Control</title>
+<meta name="description" content="Smart Control turns your webcam into a gesture sensor — move the cursor, play or pause media, and adjust volume with your hands." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="navbar-cv">
+  <div class="container inner">
+    <a href="#" class="logo">
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+        <line x1="6" y1="20" x2="14" y2="6" stroke="#4fe3c1" stroke-width="1.5"/>
+        <line x1="22" y1="20" x2="14" y2="6" stroke="#4fe3c1" stroke-width="1.5"/>
+        <line x1="6" y1="20" x2="22" y2="20" stroke="#4fe3c1" stroke-width="1.5"/>
+        <circle cx="6" cy="20" r="3" fill="#0a0e14" stroke="#4fe3c1" stroke-width="1.5"/>
+        <circle cx="22" cy="20" r="3" fill="#0a0e14" stroke="#4fe3c1" stroke-width="1.5"/>
+        <circle cx="14" cy="6" r="3" fill="#ff6b57"/>
+      </svg>
+      Smart Control
+    </a>
+    <div class="nav-links d-none d-md-flex">
+      <a href="#gestures">Gestures</a>
+      <a href="#how-it-works">How it Works</a>
+      <a href="https://github.com/Lakshmi-deshpande/Smart-Control" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <!-- TODO: replace # with your app's actual download / store link -->
+    <a href="https://drive.google.com/drive/folders/1YwFUKHdteyA9D_hsvojCntPavOrnOeG9" class="btn-cv btn-cv-primary btn-cv-sm">Get the App</a>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="container">
+    <div class="viewfinder">
+      <span class="vf-corner vf-tl"></span>
+      <span class="vf-corner vf-tr"></span>
+      <span class="vf-corner vf-bl"></span>
+      <span class="vf-corner vf-br"></span>
+
+      <div class="hud-top">
+        <span class="hud-rec"><span class="dot"></span>Tracking Active</span>
+        <span class="hud-meta">21 Landmarks · 30 FPS</span>
+      </div>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Webcam · Computer Vision · Zero Extra Hardware</p>
+          <h1>Control your computer <span class="accent">with a wave.</span></h1>
+          <p class="lead-cv">
+            Smart Control watches your hand through any webcam and turns it into a remote —
+            move the cursor, play or pause your media, and adjust the volume without touching a single key.
+          </p>
+          <div class="hero-ctas">
+            <!-- TODO: replace # with your app's actual download / store link -->
+            <a href="https://drive.google.com/drive/folders/1YwFUKHdteyA9D_hsvojCntPavOrnOeG9" class="btn-cv btn-cv-primary">Get the App</a>
+            <a href="https://github.com/Lakshmi-deshpande/Smart-Control" target="_blank" rel="noopener" class="btn-cv btn-cv-ghost">View Source ↗</a>
+          </div>
+        </div>
+
+        <div class="hand-illo">
+          <svg viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#4fe3c1" stop-opacity="0"/>
+                <stop offset="0.5" stop-color="#4fe3c1" stop-opacity="0.16"/>
+                <stop offset="1" stop-color="#4fe3c1" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="cursorGlow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="3.2" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- ambient scan sweep -->
+            <rect class="scan-rect" x="0" y="-60" width="320" height="60" fill="url(#scanGrad)">
+              <animateTransform attributeName="transform" type="translate" from="0 0" to="0 440" dur="6s" repeatCount="indefinite"/>
+            </rect>
+
+            <!-- bones -->
+            <g stroke="#4fe3c1" stroke-opacity="0.35" stroke-width="1.5" fill="none">
+              <line x1="160" y1="330" x2="120" y2="290"/>
+              <line x1="160" y1="330" x2="205" y2="290"/>
+              <line x1="120" y1="290" x2="205" y2="290"/>
+              <line x1="120" y1="290" x2="95" y2="265"/>
+              <line x1="95" y1="265" x2="70" y2="235"/>
+              <line x1="70" y1="235" x2="55" y2="205"/>
+              <line x1="120" y1="290" x2="130" y2="250"/>
+              <line x1="130" y1="250" x2="122" y2="180"/>
+              <line x1="122" y1="180" x2="116" y2="120"/>
+              <line x1="116" y1="120" x2="112" y2="75"/>
+              <line x1="130" y1="250" x2="162" y2="245"/>
+              <line x1="162" y1="245" x2="162" y2="165"/>
+              <line x1="162" y1="165" x2="162" y2="95"/>
+              <line x1="162" y1="95" x2="162" y2="45"/>
+              <line x1="162" y1="245" x2="192" y2="250"/>
+              <line x1="192" y1="250" x2="198" y2="175"/>
+              <line x1="198" y1="175" x2="203" y2="110"/>
+              <line x1="203" y1="110" x2="207" y2="65"/>
+              <line x1="192" y1="250" x2="218" y2="260"/>
+              <line x1="218" y1="260" x2="228" y2="205"/>
+              <line x1="228" y1="205" x2="236" y2="160"/>
+              <line x1="236" y1="160" x2="244" y2="105"/>
+            </g>
+
+            <!-- joints -->
+            <g fill="#4fe3c1">
+              <circle class="landmark" style="animation-delay:0s"   cx="160" cy="330" r="6"/>
+              <circle class="landmark" style="animation-delay:.15s" cx="120" cy="290" r="5"/>
+              <circle class="landmark" style="animation-delay:.3s"  cx="205" cy="290" r="5"/>
+
+              <circle class="landmark" style="animation-delay:.1s"  cx="95" cy="265" r="4.5"/>
+              <circle class="landmark" style="animation-delay:.25s" cx="70" cy="235" r="4"/>
+              <circle class="landmark" style="animation-delay:.4s"  cx="55" cy="205" r="4.5"/>
+
+              <circle class="landmark" style="animation-delay:.2s"  cx="130" cy="250" r="4.5"/>
+              <circle class="landmark" style="animation-delay:.35s" cx="122" cy="180" r="4"/>
+              <circle class="landmark" style="animation-delay:.5s"  cx="116" cy="120" r="4"/>
+
+              <circle class="landmark" style="animation-delay:.05s" cx="162" cy="245" r="4.5"/>
+              <circle class="landmark" style="animation-delay:.2s"  cx="162" cy="165" r="4"/>
+              <circle class="landmark" style="animation-delay:.35s" cx="162" cy="95" r="4"/>
+              <circle class="landmark" style="animation-delay:.5s"  cx="162" cy="45" r="4.5"/>
+
+              <circle class="landmark" style="animation-delay:.15s" cx="192" cy="250" r="4.5"/>
+              <circle class="landmark" style="animation-delay:.3s"  cx="198" cy="175" r="4"/>
+              <circle class="landmark" style="animation-delay:.45s" cx="203" cy="110" r="4"/>
+              <circle class="landmark" style="animation-delay:.6s"  cx="207" cy="65" r="4.5"/>
+
+              <circle class="landmark" style="animation-delay:.25s" cx="218" cy="260" r="4.5"/>
+              <circle class="landmark" style="animation-delay:.4s"  cx="228" cy="205" r="4"/>
+              <circle class="landmark" style="animation-delay:.55s" cx="236" cy="160" r="4"/>
+              <circle class="landmark" style="animation-delay:.7s"  cx="244" cy="105" r="4.5"/>
+            </g>
+
+            <!-- index fingertip = cursor anchor -->
+            <circle class="landmark" style="animation-delay:.6s" cx="112" cy="75" r="6.5" fill="#ff6b57" filter="url(#cursorGlow)"/>
+
+            <text x="166" y="350" font-family="JetBrains Mono, monospace" font-size="10" fill="#88989f" letter-spacing="2">WRIST</text>
+            <text x="80" y="58" font-family="JetBrains Mono, monospace" font-size="10" fill="#ff6b57" letter-spacing="2">CURSOR</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== GESTURES ===================== -->
+<section id="gestures" class="section-cv">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Four Gestures, Full Control</p>
+      <h2>Your hand, mapped to your machine</h2>
+      <p>Each pose is tracked continuously and translated into a system action — no remotes, no extra clicks.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- INDEX FINGER -->
+      <div class="col-md-6 col-lg-3">
+        <div class="gesture-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect x="22" y="66" width="76" height="60" rx="20" fill="rgba(79,227,193,0.06)" stroke="#4fe3c1" stroke-width="2"/>
+              <g stroke="#4fe3c1" stroke-width="3" stroke-linecap="round">
+                <line x1="26" y1="88" x2="14" y2="96"/>
+                <line x1="56" y1="66" x2="56" y2="54"/>
+                <line x1="72" y1="66" x2="72" y2="56"/>
+                <line x1="88" y1="66" x2="88" y2="58"/>
+              </g>
+              <g fill="#4fe3c1"><circle cx="14" cy="96" r="3"/><circle cx="56" cy="54" r="3"/><circle cx="72" cy="56" r="3"/><circle cx="88" cy="58" r="3"/></g>
+              <line x1="40" y1="66" x2="40" y2="14" stroke="#ff6b57" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="40" cy="40" r="3.5" fill="#ff6b57"/>
+              <circle cx="40" cy="14" r="5" fill="#ff6b57"/>
+            </svg>
+          </div>
+          <span class="tag">Move Cursor</span>
+          <h3>Index Finger</h3>
+          <p>Point anywhere on screen and your cursor follows your fingertip in real time.</p>
+        </div>
+      </div>
+
+      <!-- FIST -->
+      <div class="col-md-6 col-lg-3">
+        <div class="gesture-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect x="22" y="66" width="76" height="60" rx="20" fill="rgba(255,107,87,0.06)" stroke="#ff6b57" stroke-width="2"/>
+              <g stroke="#4fe3c1" stroke-width="3" stroke-linecap="round">
+                <line x1="26" y1="88" x2="16" y2="94"/>
+                <line x1="40" y1="66" x2="40" y2="56"/>
+                <line x1="56" y1="66" x2="56" y2="54"/>
+                <line x1="72" y1="66" x2="72" y2="56"/>
+                <line x1="88" y1="66" x2="88" y2="58"/>
+              </g>
+              <g fill="#4fe3c1"><circle cx="16" cy="94" r="3"/><circle cx="40" cy="56" r="3"/><circle cx="56" cy="54" r="3"/><circle cx="72" cy="56" r="3"/><circle cx="88" cy="58" r="3"/></g>
+            </svg>
+          </div>
+          <span class="tag">Play / Pause</span>
+          <h3>Fist</h3>
+          <p>Make a fist to toggle playback on whatever's currently playing.</p>
+        </div>
+      </div>
+
+      <!-- TWO FINGERS -->
+      <div class="col-md-6 col-lg-3">
+        <div class="gesture-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect x="22" y="66" width="76" height="60" rx="20" fill="rgba(79,227,193,0.06)" stroke="#4fe3c1" stroke-width="2"/>
+              <g stroke="#4fe3c1" stroke-width="3" stroke-linecap="round">
+                <line x1="26" y1="88" x2="16" y2="94"/>
+                <line x1="72" y1="66" x2="72" y2="56"/>
+                <line x1="88" y1="66" x2="88" y2="58"/>
+              </g>
+              <g fill="#4fe3c1"><circle cx="16" cy="94" r="3"/><circle cx="72" cy="56" r="3"/><circle cx="88" cy="58" r="3"/></g>
+              <g stroke="#ff6b57" stroke-width="3" stroke-linecap="round">
+                <line x1="40" y1="66" x2="40" y2="14"/>
+                <line x1="56" y1="66" x2="56" y2="12"/>
+              </g>
+              <g fill="#ff6b57">
+                <circle cx="40" cy="40" r="3.5"/><circle cx="40" cy="14" r="5"/>
+                <circle cx="56" cy="39" r="3.5"/><circle cx="56" cy="12" r="5"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tag">Adjust Volume</span>
+          <h3>Two Fingers</h3>
+          <p>Hold up two fingers and shift your hand to slide the volume up or down.</p>
+        </div>
+      </div>
+
+      <!-- OPEN PALM -->
+      <div class="col-md-6 col-lg-3">
+        <div class="gesture-card is-idle">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect x="22" y="66" width="76" height="60" rx="20" fill="rgba(79,227,193,0.06)" stroke="#4fe3c1" stroke-width="2" stroke-opacity="0.6"/>
+              <g stroke="#4fe3c1" stroke-width="3" stroke-linecap="round" stroke-opacity="0.75">
+                <line x1="26" y1="88" x2="10" y2="72"/>
+                <line x1="40" y1="66" x2="40" y2="16"/>
+                <line x1="56" y1="66" x2="56" y2="12"/>
+                <line x1="72" y1="66" x2="72" y2="16"/>
+                <line x1="88" y1="66" x2="88" y2="22"/>
+              </g>
+              <g fill="#4fe3c1" opacity="0.85">
+                <circle cx="18" cy="80" r="3"/><circle cx="10" cy="72" r="4"/>
+                <circle cx="40" cy="41" r="3"/><circle cx="40" cy="16" r="4"/>
+                <circle cx="56" cy="39" r="3"/><circle cx="56" cy="12" r="4"/>
+                <circle cx="72" cy="41" r="3"/><circle cx="72" cy="16" r="4"/>
+                <circle cx="88" cy="44" r="3"/><circle cx="88" cy="22" r="4"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tag">Stand By</span>
+          <h3>Open Palm</h3>
+          <p>An open palm pauses tracking, so resting your hand never triggers a stray action.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section id="how-it-works" class="section-cv pipeline-section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Under the Hood</p>
+      <h2>From webcam frame to system command</h2>
+      <p>Six steps run continuously, dozens of times a second, turning raw video into real actions on your computer.</p>
+    </div>
+
+    <div class="pipeline-track">
+      <div class="pipeline-step">
+        <div class="step-num">01</div>
+        <h4>Webcam</h4>
+        <p>Captures a live video feed — no extra sensors needed.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-num">02</div>
+        <h4>OpenCV</h4>
+        <p>Processes each frame and prepares it for detection.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-num">03</div>
+        <h4>MediaPipe</h4>
+        <p>Maps 21 landmarks across your hand.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-num">04</div>
+        <h4>Gesture Recognition</h4>
+        <p>Classifies the pose into a known gesture.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-num">05</div>
+        <h4>Action Mapping</h4>
+        <p>Matches the gesture to a system command.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-num">06</div>
+        <h4>System Control</h4>
+        <p>Executes it — cursor, media, or volume.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TECH STACK ===================== -->
+<section class="section-cv">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Built With</p>
+      <h2>A lean, all-Python toolchain</h2>
+      <p>No cloud calls, no extra hardware — everything runs locally, frame by frame, on your own machine.</p>
+    </div>
+    <div class="stack-pills">
+      <span class="pill">Python</span>
+      <span class="pill">OpenCV</span>
+      <span class="pill">MediaPipe</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA BAND ===================== -->
+<section class="section-cv">
+  <div class="container">
+    <div class="cta-band">
+      <p class="eyebrow">Ready When You Are</p>
+      <h2>Your hand is already the perfect remote.</h2>
+      <p>Download Smart Control and start gesturing your way through your desktop.</p>
+      <!-- TODO: replace # with your app's actual download / store link -->
+      <a href="https://drive.google.com/drive/folders/1YwFUKHdteyA9D_hsvojCntPavOrnOeG9" class="btn-cv btn-cv-primary">Get the App</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container foot-row">
+    <a href="#" class="logo" style="font-size:.95rem;">
+      <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+        <line x1="6" y1="20" x2="14" y2="6" stroke="#4fe3c1" stroke-width="1.5"/>
+        <line x1="22" y1="20" x2="14" y2="6" stroke="#4fe3c1" stroke-width="1.5"/>
+        <line x1="6" y1="20" x2="22" y2="20" stroke="#4fe3c1" stroke-width="1.5"/>
+        <circle cx="6" cy="20" r="3" fill="#0a0e14" stroke="#4fe3c1" stroke-width="1.5"/>
+        <circle cx="22" cy="20" r="3" fill="#0a0e14" stroke="#4fe3c1" stroke-width="1.5"/>
+        <circle cx="14" cy="6" r="3" fill="#ff6b57"/>
+      </svg>
+      Smart Control
+    </a>
+    <p class="foot-mono" style="margin:0;">Open-source gesture control · Built by Lakshmi Deshpande and Aryan Mevada </p>
+    <a class="foot-mono" href="https://github.com/Lakshmi-deshpande/Smart-Control" target="_blank" rel="noopener">View on GitHub ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
